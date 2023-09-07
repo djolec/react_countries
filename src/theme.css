@@ -1,0 +1,17 @@
+[data-theme="light"] {
+    --primary-bg: hsl(0, 0%, 95%);
+    --elem: hsl(0, 0%, 100%);
+    --text: hsl(200, 15%, 8%);
+    --orange: rgb(216, 71, 41);
+    --hover: hsl(197, 15%, 66%);
+    --topbtn: hsla(0, 0%, 100%, 0.68);
+  }
+  
+  [data-theme="dark"] {
+    --primary-bg: hsl(207, 26%, 17%);
+    --elem: hsl(209, 23%, 22%);
+    --text: hsl(0, 0%, 100%);
+    --orange: rgb(216, 71, 41);
+    --hover: hsl(200, 18%, 13%);
+    --topbtn: hsla(208, 23%, 22%, 0.653);
+  }
