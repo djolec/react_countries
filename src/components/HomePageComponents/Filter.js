@@ -1,26 +1,26 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "./App";
+import { AppContext } from "../../App";
 
 const Filter = () => {
-  const { handleFilterToggle, filterToggle, region, setRegion } = useContext(AppContext);
+  const { dispatch, state } = useContext(AppContext);
 
   return (
     <div className="flex flex-col sm:w-[30%] w-[60%] relative shadow-md">
       <button
         aria-label="filter by region"
         className="text-[var(--text)] 2xl:text-2xl transition-colors ease-in-out duration-150 w-full rounded-md text-left p-2 h-10 2xl:h-16 bg-[var(--elem)]"
-        onClick={handleFilterToggle}
+        onClick={() => dispatch({ type: "filterToggle" })}
       >
-        {region}
+        {state.region}
       </button>
-      {filterToggle && (
+      {state.filterToggle && (
         <ul className="text-[var(--text)] 2xl:text-2xl transition-colors ease-in-out duration-150 w-full z-10 absolute top-12 2xl:top-20 outline-none cursor-pointer bg-[var(--elem)] rounded-md overflow-hidden">
           <li
             className="hover:bg-[var(--hover)] px-2 py-1 2xl:text-2xl"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             All
@@ -28,8 +28,8 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             North America
@@ -37,8 +37,8 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             South America
@@ -46,8 +46,8 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             Africa
@@ -55,8 +55,8 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             Europe
@@ -64,8 +64,8 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             Asia
@@ -73,8 +73,8 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              setRegion(e.target.textContent);
-              handleFilterToggle();
+              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
+              dispatch({ type: "filterToggle" })
             }}
           >
             Oceania

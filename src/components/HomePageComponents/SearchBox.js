@@ -1,11 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "./App";
-// import { ReactComponent as Search } from "./img/search.svg"
+import { AppContext } from "../../App";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const SearchBox = () => {
-  const { setSearch, isDark } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -16,7 +15,7 @@ const SearchBox = () => {
         } transition-colors ease-in-out duration-150"
       />
       <input
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => dispatch({ type: "countryInput", payload: e.target.value})}
         className="w-full h-full px-12 pr-4 2xl:px-16 2xl:text-2xl outline-none bg-[var(--elem)] rounded-md text-[var(--text)] transition-colors ease-in-out duration-150 shadow-md"
         type="text"
         placeholder="Search Country"

@@ -1,9 +1,9 @@
 import React from "react";
-import InfoSection from "./InfoSection";
-import Borders from "./Borders";
+import InfoSection from "../components/DetailsPageComponents/InfoSection";
+import Borders from "../components/DetailsPageComponents/Borders";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
-import { queryContext } from "./Main";
+import { queryContext } from "../components/Main";
 import { useNavigate } from "react-router-dom";
 
 const DetailsPage = () => {
@@ -24,7 +24,7 @@ const DetailsPage = () => {
       <>
         <section className="sm:px-16 px-6 py-8 2xl:py-16 flex flex-col sm:gap-16 gap-10">
 
-          <button aria-label="go back" onClick={() => navigate(-1)} className="w-[100px] 2xl:w-[150px] bg-[var(--elem)] py-[0.4rem] px-[2rem] shadow-[1px_2px_6px_2px_rgba(0,0,0,0.3)] text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-in-out duration-150 2xl:text-2xl text-center">
+          <button aria-label="go back" onClick={() => navigate(-1)} className="w-[100px] 2xl:w-[150px] bg-[var(--elem)] py-[0.4rem] rounded-md px-[2rem] shadow-[1px_2px_6px_2px_rgba(0,0,0,0.3)] text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-in-out duration-150 2xl:text-2xl text-center">
             Back
           </button>
 
@@ -38,9 +38,7 @@ const DetailsPage = () => {
               <InfoSection country={country}/>
               <Borders country={country}/>
             </div>
-
           </div>
-
         </section>
       </>
     );

@@ -1,6 +1,6 @@
 import React from 'react'
-import SearchAndFilter from './SearchAndFilter'
-import Feed from './Feed'
+import SearchAndFilter from '../components/HomePageComponents/SearchAndFilter'
+import Feed from '../components/HomePageComponents/Feed'
 
 const Home = () => {
   return (

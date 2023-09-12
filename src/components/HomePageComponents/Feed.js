@@ -1,12 +1,12 @@
 import React from "react";
 import CountryCard from "./CountryCard";
-import SkeletonMain from "./SkeletonMain";
+import SkeletonMain from "./SkeletonMain"
 import { useContext } from "react";
-import { AppContext } from "./App";
-import { queryContext } from "./Main";
+import { AppContext } from "../../App";
+import { queryContext } from "../Main";
 
 const Feed = () => {
-  const { search, region } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   const { isLoading, data, isError, error } = useContext(queryContext);
   const numArr = Array.from({ length: 16 }, (_, index) => index + 1);
 
@@ -30,22 +30,22 @@ const Feed = () => {
   }
 
   const regionFilter = data?.data.filter((country) =>
-    region === "All"
+    state.region === "All"
       ? country
       : country.continents
           .join(", ")
           .toLowerCase()
-          .includes(region.toLowerCase())
+          .includes(state.region.toLowerCase())
   );
 
   return (
     <div className="w-full relative grid grid-cols-card 2xl:grid-cols-cardBig sm:gap-[40px] gap-[20px] bg-[var(--primary-bg)] transition-colors ease-in-out duration-150 sm:px-12 px-4">
       {regionFilter.filter((country) =>
-        country.name.common.toLowerCase().includes(search.toLowerCase())
+        country.name.common.toLowerCase().includes(state.searchCountry.toLowerCase())
       ).length ? (
         regionFilter
           .filter((country) =>
-            country.name.common.toLowerCase().includes(search.toLowerCase())
+            country.name.common.toLowerCase().includes(state.searchCountry.toLowerCase())
           )
           .map((country) => {
             const capitals =

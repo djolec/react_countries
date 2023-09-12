@@ -1,6 +1,5 @@
 import React from "react";
 import BorderButton from "./BorderButton";
-import { Link } from "react-router-dom";
 
 const Borders = ({ country }) => {
   const { borders = [] } = country;
