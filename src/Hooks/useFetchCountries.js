@@ -1,23 +1,18 @@
-import React from 'react'
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+const fetchData = () => {
+  return axios.get("https://restcountries.com/v3.1/all");
+};
 
 const useFetchCountries = () => {
-    const fetchData = () => {
-    return axios.get("https://restcountries.com/v3.1/all");
-  };
+  return useQuery(["countries"], fetchData, {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+};
 
-  const { isLoading, data, isError, error } = useQuery(
-    ["countries"],
-    fetchData,
-    {
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  return { isLoading, data, isError, error }
-    
-}
-
-export default useFetchCountries
+export default useFetchCountries;

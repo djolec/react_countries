@@ -3,15 +3,15 @@ import Main from "./components/Main";
 import ScrollBtn from "./components/HomePageComponents/ScrollBtn";
 import useCustomReducer from "./Hooks/useCustomReducer";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useEffect, createContext } from "react";
 import "./theme.css";
-
+const queryClient = new QueryClient();
 export const AppContext = createContext();
 
 function App() {
-  const queryClient = new QueryClient();
 
-  const  [state, dispatch] = useCustomReducer();
+  const [state, dispatch] = useCustomReducer();
 
   useEffect(() => {
     // Add a scroll event listener to track scrolling
@@ -89,7 +89,9 @@ function App() {
           <ScrollBtn />
           <Main />
         </AppContext.Provider>
+        
       </div>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right"/>
     </QueryClientProvider>
   );
 }

@@ -15,7 +15,10 @@ const SearchBox = () => {
         } transition-colors ease-in-out duration-150"
       />
       <input
-        onChange={(e) => dispatch({ type: "countryInput", payload: e.target.value})}
+        onChange={(e) => {
+          dispatch({ type: "countryInput", payload: e.target.value})
+          dispatch({ type: "pageOne"})
+        } }
         className="w-full h-full px-12 pr-4 2xl:px-16 2xl:text-2xl outline-none bg-[var(--elem)] rounded-md text-[var(--text)] transition-colors ease-in-out duration-150 shadow-md"
         type="text"
         placeholder="Search Country"

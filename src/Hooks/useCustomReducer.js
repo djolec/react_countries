@@ -17,6 +17,12 @@ const reducer = (state, action) => {
         return { ...state, region: action.regionPayload };
       case "darkModeToggle":
         return { ...state, darkMode: action.darkModePayload };
+      case "nextPage":
+        return { ...state, page: state.page + 1 }
+      case "prevPage":
+        return { ...state, page: state.page - 1 }
+      case "pageOne":
+        return { ...state, page: state.page = 1 }
       default:
         return state;
     }
@@ -24,9 +30,7 @@ const reducer = (state, action) => {
 
 const useCustomReducer = () => {
 
-    const [state, dispatch] = useReducer(reducer, { isVisible: false, searchCountry: "", filterToggle: false, region: "All", darkMode: JSON.parse(localStorage.getItem("isDark")) || null });
-
-
+    const [state, dispatch] = useReducer(reducer, { page: 1, isVisible: false, searchCountry: "", filterToggle: false, region: "All", darkMode: JSON.parse(localStorage.getItem("isDark")) || null });
 
       return  [state, dispatch]
 }

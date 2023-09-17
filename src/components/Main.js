@@ -6,9 +6,11 @@ import { Routes, Route } from "react-router-dom";
 import useFetchCountries from "../Hooks/useFetchCountries";
 export const queryContext = createContext();
 
-const Main = () => {
 
+const Main = () => {
+  
   const { isLoading, data, isError, error } = useFetchCountries()
+
 
   return (
     <main className="grow bg-[var(--primary-bg)] transition-colors ease-in-out duration-150 pb-12 pt-20 sm:pt-24">

@@ -21,6 +21,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             All
@@ -30,6 +31,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             North America
@@ -39,6 +41,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             South America
@@ -48,6 +51,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             Africa
@@ -57,6 +61,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             Europe
@@ -66,6 +71,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             Asia
@@ -75,6 +81,7 @@ const Filter = () => {
             onClick={(e) => {
               dispatch({ type: "setRegion", regionPayload: e.target.textContent });
               dispatch({ type: "filterToggle" })
+              dispatch({ type: "pageOne"})
             }}
           >
             Oceania

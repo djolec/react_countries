@@ -2,7 +2,6 @@ import React from "react";
 
 
 const InfoSection = ({ country }) => {
-  console.log(country)
   const {
     timezones,
     landlocked,
