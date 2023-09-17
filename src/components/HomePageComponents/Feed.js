@@ -46,20 +46,22 @@ const Feed = () => {
       .includes(state.searchCountry.toLowerCase())
   );
 
-  const extractedData = searchFilter.map((country) => {
-    return {
-      flags: country.flags.png,
-      name: country.name.common,
-      capitals:
-        country.capital !== undefined
-          ? country.capital.join(", ")
-          : "No capital city",
-      population: country.population
-        .toString()
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 "),
-      continents: country.continents.join(", "),
-    };
-  });
+  const extractedData = searchFilter
+    .map((country) => {
+      return {
+        flags: country.flags.png,
+        name: country.name.common,
+        capitals:
+          country.capital !== undefined
+            ? country.capital.join(", ")
+            : "No capital city",
+        population: country.population
+          .toString()
+          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 "),
+        continents: country.continents.join(", "),
+      };
+    })
+    .sort((a, b) => (a.name > b.name ? 1 : -1));
 
   const itemsPerPage = 20;
   const startIndex = (state.page - 1) * itemsPerPage;
@@ -68,8 +70,6 @@ const Feed = () => {
     extractedData.length <= itemsPerPage
       ? extractedData
       : extractedData.slice(startIndex, endIndex);
-  console.log(currentData);
-  console.log(state.page);
 
   return (
     <>

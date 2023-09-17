@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import { FaChevronDown } from "react-icons/fa6";
 
 const Filter = () => {
   const { dispatch, state } = useContext(AppContext);
@@ -9,19 +10,23 @@ const Filter = () => {
     <div className="flex flex-col sm:w-[30%] w-[60%] relative shadow-md">
       <button
         aria-label="filter by region"
-        className="text-[var(--text)] 2xl:text-2xl transition-colors ease-in-out duration-150 w-full rounded-md text-left p-2 h-10 2xl:h-16 bg-[var(--elem)]"
+        className="text-[var(--text)] 2xl:text-2xl flex flex-row justify-between items-center transition-colors ease-in-out duration-150 w-full rounded-md text-left p-2 h-10 2xl:h-16 bg-[var(--elem)]"
         onClick={() => dispatch({ type: "filterToggle" })}
       >
-        {state.region}
+        <h1>{state.region}</h1>
+        <FaChevronDown className={`${state.filterToggle ? "rotate-180" : "rotate-0"}`}/>
       </button>
       {state.filterToggle && (
         <ul className="text-[var(--text)] 2xl:text-2xl transition-colors ease-in-out duration-150 w-full z-10 absolute top-12 2xl:top-20 outline-none cursor-pointer bg-[var(--elem)] rounded-md overflow-hidden">
           <li
             className="hover:bg-[var(--hover)] px-2 py-1 2xl:text-2xl"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             All
@@ -29,9 +34,12 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             North America
@@ -39,9 +47,12 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             South America
@@ -49,9 +60,12 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             Africa
@@ -59,9 +73,12 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             Europe
@@ -69,9 +86,12 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             Asia
@@ -79,9 +99,12 @@ const Filter = () => {
           <li
             className="hover:bg-[var(--hover)] px-2 py-1"
             onClick={(e) => {
-              dispatch({ type: "setRegion", regionPayload: e.target.textContent });
-              dispatch({ type: "filterToggle" })
-              dispatch({ type: "pageOne"})
+              dispatch({
+                type: "setRegion",
+                regionPayload: e.target.textContent,
+              });
+              dispatch({ type: "filterToggle" });
+              dispatch({ type: "pageOne" });
             }}
           >
             Oceania
