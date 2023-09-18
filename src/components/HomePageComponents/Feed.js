@@ -16,6 +16,7 @@ const Feed = () => {
     if (!data) return [];
 
     return data.data.filter((country) =>
+      
       state.region === "All"
         ? country
         : country.continents
@@ -109,7 +110,7 @@ const Feed = () => {
   //   })
   //   .sort((a, b) => (a.name > b.name ? 1 : -1));
 
-  const itemsPerPage = 200;
+  const itemsPerPage = 40;
   const startIndex = (state.page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData =
