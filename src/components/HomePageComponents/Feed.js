@@ -110,7 +110,7 @@ const Feed = () => {
   //   })
   //   .sort((a, b) => (a.name > b.name ? 1 : -1));
 
-  const itemsPerPage = 40;
+  const itemsPerPage = 20;
   const startIndex = (state.page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData =
