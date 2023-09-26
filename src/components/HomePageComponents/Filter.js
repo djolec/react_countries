@@ -8,6 +8,21 @@ const Filter = () => {
   const [filterToggle, setFilterToggle] = useState(false);
   const { setPage, region, setRegion } = useContext(AppContext);
 
+  const contVars = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+      },
+    },
+    exit: {
+      opacity: 0,
+    },
+  };
+
   const filterVars = {
     initial: {
       scaleY: 0,
@@ -18,6 +33,7 @@ const Filter = () => {
     exit: {
       scaleY: 0,
       transition: {
+        delay: 0.2,
       },
     },
   };
@@ -45,83 +61,104 @@ const Filter = () => {
             animate="animate"
             exit="exit"
           >
-            <li
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1 2xl:text-2xl"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               All
-            </li>
-            <li
+            </motion.li>
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               North America
-            </li>
-            <li
+            </motion.li>
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               South America
-            </li>
-            <li
+            </motion.li>
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               Africa
-            </li>
-            <li
+            </motion.li>
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               Europe
-            </li>
-            <li
+            </motion.li>
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               Asia
-            </li>
-            <li
+            </motion.li>
+            <motion.li
               className="hover:bg-[var(--hover)] px-2 py-1"
               onClick={(e) => {
                 setRegion(e.target.textContent);
                 setFilterToggle(false);
                 setPage(1);
               }}
-              
+              variants={contVars}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               Oceania
-            </li>
+            </motion.li>
           </motion.ul>
         )}
       </AnimatePresence>

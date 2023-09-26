@@ -7,7 +7,7 @@ import { AppContext } from "../../App";
 import { queryContext } from "../Main";
 
 const Feed = () => {
-  const { region, searchCountry, page, setPage } = useContext(AppContext);
+  const { region, searchCountry, page, setPage, scrollToTop } = useContext(AppContext);
   const { isLoading, data, isError, error } = useContext(queryContext);
   const numArr = Array.from({ length: 16 }, (_, index) => index + 1);
 
@@ -78,7 +78,10 @@ const Feed = () => {
             className={`text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-out duration-150 fixed z-50 top-1/2 right-0 -translate-x-1 sm:translate-x-1 ${
               endIndex >= extractedData.length ? "hidden" : "visible"
             }`}
-            onClick={() => setPage(page + 1)}
+            onClick={() => {
+              setPage(page + 1)
+              scrollToTop()
+            }}
           >
             <FaChevronRight className="h-8 lg:h-16 w-auto" />
           </button>
@@ -87,7 +90,10 @@ const Feed = () => {
             className={`text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-out duration-150 fixed z-50 top-1/2 left-0 translate-x-1 sm:-translate-x-1 ${
               page === 1 ? "hidden" : "visible"
             }`}
-            onClick={() => setPage(page - 1)}
+            onClick={() => {
+              setPage(page - 1)
+              scrollToTop()
+            }}
           >
             <FaChevronLeft className="h-8 lg:h-16 w-auto" />
           </button>
