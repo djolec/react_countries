@@ -2,18 +2,25 @@ import React from "react";
 import InfoSection from "../components/DetailsPageComponents/InfoSection";
 import Borders from "../components/DetailsPageComponents/Borders";
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { queryContext } from "../components/Main";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { AppContext } from "../App";
 
 const DetailsPage = () => {
+  useEffect(() => {
+    console.log("raunnnnn")
+    scrollToTop()
+  }, [])
 
   const navigate = useNavigate()
 
-
   const { id } = useParams();
   const { isLoading, data } = useContext(queryContext);
+  const { scrollToTop } = useContext(AppContext);
+
+
 
   if (!isLoading) {
     const countryDetailsArr = data.data.filter(
