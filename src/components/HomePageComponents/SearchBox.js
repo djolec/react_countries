@@ -4,7 +4,7 @@ import { AppContext } from "../../App";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const SearchBox = () => {
-  const { dispatch } = useContext(AppContext);
+  const { setPage, setSearchCountry } = useContext(AppContext);
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -16,8 +16,8 @@ const SearchBox = () => {
       />
       <input
         onChange={(e) => {
-          dispatch({ type: "countryInput", payload: e.target.value})
-          dispatch({ type: "pageOne"})
+          setSearchCountry(e.target.value)
+          setPage(1)
         } }
         className="w-full h-full px-12 pr-4 2xl:px-16 2xl:text-2xl outline-none bg-[var(--elem)] rounded-md text-[var(--text)] transition-colors ease-in-out duration-150 shadow-md"
         type="text"

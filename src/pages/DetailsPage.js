@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { queryContext } from "../components/Main";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const DetailsPage = () => {
 
@@ -21,7 +22,11 @@ const DetailsPage = () => {
     const country = countryDetailsArr[0];
 
     return (
-      <>
+      <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      >
         <section className="sm:px-16 px-6 py-8 2xl:py-16 flex flex-col sm:gap-16 gap-10">
 
           <button aria-label="go back" onClick={() => navigate(-1)} className="w-[100px] 2xl:w-[150px] bg-[var(--elem)] py-[0.4rem] rounded-md px-[2rem] shadow-[1px_2px_6px_2px_rgba(0,0,0,0.3)] text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-in-out duration-150 2xl:text-2xl text-center">
@@ -40,7 +45,7 @@ const DetailsPage = () => {
             </div>
           </div>
         </section>
-      </>
+      </motion.div>
     );
   }
 };

@@ -2,44 +2,30 @@ import React from "react";
 import CountryCard from "./CountryCard";
 import SkeletonMain from "./SkeletonMain";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
-import { useContext, useCallback, useMemo } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../App";
 import { queryContext } from "../Main";
 
 const Feed = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { region, searchCountry, page, setPage } = useContext(AppContext);
   const { isLoading, data, isError, error } = useContext(queryContext);
   const numArr = Array.from({ length: 16 }, (_, index) => index + 1);
-  
-  
-  const regionFilter = useCallback(() => {
-    if (!data) return [];
 
-    return data.data.filter((country) =>
-      
-      state.region === "All"
-        ? country
-        : country.continents
-            .join(", ")
-            .toLowerCase()
-            .includes(state.region.toLowerCase())
-    );
-  }, [data, state.region]);
+  const regionFilter = data?.data.filter((country) =>
+    region === "All"
+      ? country
+      : country.continents
+          .join(", ")
+          .toLowerCase()
+          .includes(region.toLowerCase())
+  );
 
-  const searchFilter = useCallback(() => {
-    if (!data) return [];
+  const searchFilter = regionFilter?.filter((country) =>
+    country.name.common.toLowerCase().includes(searchCountry.toLowerCase())
+  );
 
-    return regionFilter().filter((country) =>
-      country.name.common
-        .toLowerCase()
-        .includes(state.searchCountry.toLowerCase())
-    );
-  }, [regionFilter, state.searchCountry]);
-
-  const extractedData = useMemo(() => {
-    if (!data) return [];
-
-    return searchFilter().map((country) => {
+  const extractedData = searchFilter
+    ?.map((country) => {
       return {
         flags: country.flags.png,
         name: country.name.common,
@@ -52,9 +38,8 @@ const Feed = () => {
           .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 "),
         continents: country.continents.join(", "),
       };
-    }).sort((a, b) => (a.name > b.name ? 1 : -1));
-  }, [searchFilter]);
-
+    })
+    .sort((a, b) => (a.name > b.name ? 1 : -1));
 
   if (isLoading) {
     return (
@@ -76,48 +61,14 @@ const Feed = () => {
     );
   }
 
-  
-
-  // const regionFilter = data.data.filter((country) =>
-  //   state.region === "All"
-  //     ? country
-  //     : country.continents
-  //         .join(", ")
-  //         .toLowerCase()
-  //         .includes(state.region.toLowerCase())
-  // );
-
-  // const searchFilter = regionFilter.filter((country) =>
-  //   country.name.common
-  //     .toLowerCase()
-  //     .includes(state.searchCountry.toLowerCase())
-  // );
-
-  // const extractedData = searchFilter
-  //   .map((country) => {
-  //     return {
-  //       flags: country.flags.png,
-  //       name: country.name.common,
-  //       capitals:
-  //         country.capital !== undefined
-  //           ? country.capital.join(", ")
-  //           : "No capital city",
-  //       population: country.population
-  //         .toString()
-  //         .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 "),
-  //       continents: country.continents.join(", "),
-  //     };
-  //   })
-  //   .sort((a, b) => (a.name > b.name ? 1 : -1));
-
   const itemsPerPage = 20;
-  const startIndex = (state.page - 1) * itemsPerPage;
+  const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData =
     extractedData.length <= itemsPerPage
       ? extractedData
       : extractedData.slice(startIndex, endIndex);
-
+      
   return (
     <>
       {extractedData.length >= itemsPerPage && (
@@ -127,16 +78,16 @@ const Feed = () => {
             className={`text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-out duration-150 fixed z-50 top-1/2 right-0 -translate-x-1 sm:translate-x-1 ${
               endIndex >= extractedData.length ? "hidden" : "visible"
             }`}
-            onClick={() => dispatch({ type: "nextPage" })}
+            onClick={() => setPage(page + 1)}
           >
             <FaChevronRight className="h-8 lg:h-16 w-auto" />
           </button>
           <button
-            disabled={state.page === 1 ? true : false}
+            disabled={page === 1 ? true : false}
             className={`text-[var(--text)] hover:text-[var(--orange)] transition-colors ease-out duration-150 fixed z-50 top-1/2 left-0 translate-x-1 sm:-translate-x-1 ${
-              state.page === 1 ? "hidden" : "visible"
+              page === 1 ? "hidden" : "visible"
             }`}
-            onClick={() => dispatch({ type: "prevPage" })}
+            onClick={() => setPage(page - 1)}
           >
             <FaChevronLeft className="h-8 lg:h-16 w-auto" />
           </button>
@@ -155,6 +106,7 @@ const Feed = () => {
                 population={country.population}
                 capitals={country.capitals}
                 region={country.continents}
+                animKey={index + 1}
               />
             );
           })
